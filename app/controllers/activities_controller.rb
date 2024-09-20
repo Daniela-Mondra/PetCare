@@ -19,7 +19,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.booking_id = @booking.id
     if @activity.save
-      redirect_to booking_activities_path, notice: 'Actividad creada con éxito.'
+      redirect_to booking_activities_path, notice: '🎉 Activity was successfully created.'
     else
       render :new
     end
@@ -30,7 +30,7 @@ class ActivitiesController < ApplicationController
 
   def update
     if @activity.update(activity_params)
-      redirect_to booking_activities_path, notice: 'Activity was successfully updated.'
+      redirect_to booking_activities_path, notice: '🎉 Activity was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class ActivitiesController < ApplicationController
 
   def destroy
     @activity.destroy!
-    redirect_to booking_activities_path, notice: 'Activity was successfully deleted.'
+    redirect_to booking_activities_path, notice: '😔 Activity was successfully deleted.'
   end
 
   private
