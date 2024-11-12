@@ -26,21 +26,21 @@
               <%= link_to edit_pet_path(pet), class: 'card-box__btn' do %>
                 <i class="fa-solid fa-pen-to-square"></i>
               <% end %>
-              <%= link_to pet, data: { turbo_method: :delete, bs_toggle: "modal", bs_target: "#petModal" }, class: 'px-3 text-orange', style: 'font-size: 20px;'  do %>
+              <%= link_to pet, data: { turbo_method: :delete, bs_toggle: "modal", bs_target: "#petModal-#{pet.id}" }, class: 'px-3 text-orange', style: 'font-size: 20px;'  do %>
                 <i class="fa-solid fa-trash"></i>
               <% end %>
 
 
 
 <!-- Modal -->
-                  <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="petModal-<%= pet.id %>" tabindex="-1" aria-labelledby="petModal-<%= pet.id %>" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title text-center" id="petModalLabel">Are you sure?</h5>
+                          <h5 class="modal-title text-center" id="petModal-<%= pet.id %>">Are you sure?</h5>
                           </div>
                           <div class="modal-body">
-                            <strong><%= current_user.first_name %></strong> you're about to delete this service
+                            Are you sure you want to delete <strong><%= pet.name %></strong>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn rounded-pill btn-secondary" data-bs-dismiss="modal">Close</button>
